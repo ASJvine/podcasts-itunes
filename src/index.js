@@ -1,5 +1,5 @@
 import page from 'page'
-import './main.css'
+import './styles/main.scss'
 
 import podcastListPage from './containers/podcastListPage'
 import podcastPage from './containers/podcastPage'

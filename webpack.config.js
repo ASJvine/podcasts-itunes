@@ -5,6 +5,14 @@ const ENV = process.env.NODE_ENV || 'development'
 const isProd = ENV === 'production'
 const WebpackErrorNotificationPlugin = require('webpack-error-notification')
 
+//FROM https://github.com/jtangelder/sass-loader
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+
+const extractSass = new ExtractTextPlugin({
+    filename: '[name].[contenthash].css',
+    disable: process.env.NODE_ENV === 'development'
+});
+
 module.exports = {
   cache: !isProd,
   context: path.resolve(__dirname, 'src'),
@@ -39,11 +47,16 @@ module.exports = {
         },
       },
       {
-        test: /\.css$/,
-        use: [
-          'style-loader',
-          'css-loader',
-        ]
+        test: /\.scss$/,
+        loader: extractSass.extract({
+            loader: [{
+                loader: "css-loader"
+            }, {
+                loader: "sass-loader"
+            }],
+            // use style-loader in development
+            fallbackLoader: "style-loader"
+        })
       },
       {
         test: /\.(png|jpg|wav)$/,
@@ -63,6 +76,7 @@ module.exports = {
           NODE_ENV: JSON.stringify(ENV),
         },
       }),
+      extractSass
     ]
 
     if (!isProd) {
