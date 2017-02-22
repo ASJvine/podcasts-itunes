@@ -1,0 +1,29 @@
+.Field {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 10px;
+}
+#search-wrapper {
+  box-sizing: border-box;
+  padding: 5px;
+}
+
+input[type="text"] {
+  width: 250px;
+  padding: 12px 5px;
+  border-radius: 7px;
+  border:1.5px solid $grey;
+  font-size: $font-size-small;
+  box-shadow: 1px -1px 1px 0px rgba(0,0,0,0.2);
+}
+
+.channels-found {
+  background: $dark-blue;
+  border-radius: 25%;
+  padding: 5px;
+  margin-left: 5px;
+  color: $white;
+  font-weight: bold;
+  letter-spacing: 1.5px;
+}

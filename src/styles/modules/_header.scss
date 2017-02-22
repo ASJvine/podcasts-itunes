@@ -1,0 +1,23 @@
+header {
+  width: 100%;
+  max-width: 960px;
+  min-width: auto;
+  position: fixed;
+  top:0;
+  z-index: 1;
+  background: $white;
+}
+
+nav {
+  border-bottom: $grey-border;
+  display: flex;
+}
+.title {
+  a {
+    display: block;
+    margin-left: 10px;
+    color: $dark-blue;
+    text-decoration: none;
+    font-weight: lighter;
+  }
+}
