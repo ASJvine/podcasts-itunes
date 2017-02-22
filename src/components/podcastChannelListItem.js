@@ -1,4 +1,4 @@
-function podcastChannelList (podcastChannel) {
+function podcastChannelListItem (podcastChannel) {
   let image = podcastChannel['im:image'][0].label
   let label = podcastChannel['im:name'].label
   let author = podcastChannel['im:artist'].label
@@ -11,4 +11,4 @@ function podcastChannelList (podcastChannel) {
   </li>`
 }
 
-export default podcastChannelList
+export default podcastChannelListItem
