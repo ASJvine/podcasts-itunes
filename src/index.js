@@ -17,18 +17,18 @@ page()
 
 function podcastList () {
   console.log('podcastList page')
-  podcastListPage().then(html => rootNode.innerHTML = html)
+  podcastListPage().then(html => { rootNode.innerHTML = html })
 }
 
 function podcast (ctx) {
   console.log('ctx.params', ctx.params)
   const { podcast } = ctx.params
   console.log('podcast page', podcast)
-  podcastPage({ podcast }).then(html => rootNode.innerHTML = html)
+  podcastPage({ podcast }).then(html => { rootNode.innerHTML = html })
 }
 
 function episode (ctx) {
   const { podcast, episode } = ctx.params
   console.log('episode page', podcast, episode)
-  episodePage({ podcast, episode }).then(html => rootNode.innerHTML = html)
+  episodePage({ podcast, episode }).then(html => { rootNode.innerHTML = html })
 }
