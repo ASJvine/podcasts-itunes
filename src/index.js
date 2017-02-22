@@ -17,7 +17,9 @@ page()
 
 function podcastList () {
   console.log('podcastList page')
-  podcastListPage().then(html => { rootNode.innerHTML = html })
+  podcastListPage().then(html => {
+    rootNode.innerHTML = html
+  })
 }
 
 function podcast (ctx) {

@@ -1,14 +1,15 @@
 import podcastChannelListItem from '../components/podcastChannelListItem'
+import podcastChannelList from '../components/podcastChannelList'
 
 function podcastChannelListContainer (data) {
-  console.log('Data from podcastChannelListContainer', data)
-  let podcastsMarkup = ''
+  let podcastsListMarkup = ''
   data.feed.entry.forEach((podcastChannel) => {
-    podcastsMarkup += podcastChannelListItem(podcastChannel)
+    podcastsListMarkup += podcastChannelListItem(podcastChannel)
   })
   console.log('entry length', data.feed.entry.length)
   // @TODO [AdGo] Perform the injection to the html page
   // return $('.podcast-list').append(podcastsMarkup)
+  return podcastsListMarkup
 }
 
 export default podcastChannelListContainer
