@@ -1,19 +1,20 @@
 .single-podcast {
+  box-shadow: $grey-shadow;
   flex-basis: 60%;
   flex-direction: column;
-  box-shadow: $grey-shadow;
 
   &-header {
     h2 {
-      margin: 15px 15px 0;
       font-size: 20px;
+      margin: 15px 15px 0;
     }
   }
 
   &-description {
-    margin: 0px 15px;
+    border-bottom: $grey-border;
+    margin: 0 15px;
     padding-bottom: 5px;
-    border-bottom:$grey-border;
+
     p {
       font-size: $font-size-small;
       font-style: italic;
@@ -23,11 +24,11 @@
   }
 
   &-audio {
-    padding-top: 10px;
     margin: 0 15px 15px;
+    padding-top: 10px;
     audio {
-      width: 100%;
       background: black;
+      width: 100%;
     }
   }
 }

@@ -1,36 +1,37 @@
 .episodes-list {
-  margin-top: 15px;
   box-shadow: $grey-shadow;
+  margin-top: 15px;
 }
 
 .table {
   display: flex;
   flex-flow: column nowrap;
-  justify-content: space-between;
   font-size: 14px;
+  justify-content: space-between;
   line-height: 1.5;
   margin: 15px 10px;
 }
+
 .table-header {
-  font-weight: 700;
   // @TODO Add to the variables
-  background-color: #f2f2f2;
+  background-color: $table-header-background-color;
+  font-weight: 700;
 }
 
 .table-row {
-  width: 100%;
+  border-bottom: $grey-border;
   display: flex;
   flex-flow: row nowrap;
-  border-bottom: $grey-border;
+  width: 100%;
 
   &:not(:first-child) {
-    padding: 5px 0;
     font-size: $font-size-small;
     font-weight: bolder;
+    padding: 5px 0;
   }
 
   &:first-of-type {
-    border-bottom:1.5px solid #b8b8b8;
+    border-bottom: 1.5px solid $table-header-border-color;
   }
 
   &:nth-of-type(even) {
@@ -44,16 +45,18 @@
 
 .table-row-item {
   display: flex;
+  flex-basis: 0;
   flex-flow: row nowrap;
   flex-grow: 1;
-  flex-basis: 0;
 
-  &:first-child{
-    flex:4;
-    margin-left: 5px
+  &:first-child {
+    flex: 4;
+    margin-left: 5px;
   }
-  &:last-child{
-    margin-right: 10px;
+
+  &:last-child {
     justify-content: flex-end;
+    margin-right: 10px;
+
   }
 }

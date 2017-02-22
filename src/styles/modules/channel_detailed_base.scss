@@ -1,22 +1,22 @@
 .main-container-podcast {
-  margin-top: 80px;
+  align-items: flex-start;
   display: flex;
   justify-content: space-around;
-  align-items: flex-start;
+  margin-top: 80px;
 }
 
 .podcast-channel-detailed {
-  flex-basis: 25%;
   box-shadow: $grey-shadow;
+  flex-basis: 25%;
 
   &-photo-wrapper {
+    align-items: center;
     display: flex;
     justify-content: center;
-    align-items: center;
 
     img {
-      margin: 20px 0;
       border-radius: 5px;
+      margin: 20px 0;
     }
   }
 
@@ -25,9 +25,9 @@
     padding-bottom: 20px;
 
     &-wrapper {
-      padding-top: 20px;
       border-top: $grey-border;
-      margin:0 15px;
+      margin: 0 15px;
+      padding-top: 20px;
     }
 
     &-label {
@@ -41,6 +41,7 @@
       font-weight: bolder;
     }
   }
+
   &-description {
     border-top: $grey-border;
     padding-bottom: 10px;
@@ -50,6 +51,7 @@
       font-weight: bold;
       margin-bottom: 5px;
     }
+
     p {
       font-size: $font-size-small;
       font-style: italic;

@@ -1,23 +1,24 @@
 header {
-  width: 100%;
+  background: $white;
   max-width: 960px;
   min-width: auto;
   position: fixed;
-  top:0;
+  top: 0;
+  width: 100%;
   z-index: 1;
-  background: $white;
 }
 
 nav {
   border-bottom: $grey-border;
   display: flex;
 }
+
 .title {
   a {
-    display: block;
-    margin-left: 10px;
     color: $dark-blue;
-    text-decoration: none;
+    display: block;
     font-weight: lighter;
+    margin-left: 10px;
+    text-decoration: none;
   }
 }

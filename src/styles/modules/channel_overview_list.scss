@@ -3,9 +3,8 @@
 }
 
 .podcast-list {
+  align-items: flex-start;
   display: flex;
   flex-flow: row wrap;
-  align-items: flex-start;
   justify-content: space-around;;
-
 }
