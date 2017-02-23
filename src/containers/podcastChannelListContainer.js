@@ -3,7 +3,6 @@ import podcastChannelList from '../components/podcastChannelList'
 
 function podcastChannelListContainer (data) {
   let podcastsListMarkup = ''
-  console.log('[data from ListContainer]', data)
   data.forEach((podcastChannel) => {
     podcastsListMarkup += podcastChannelListItem(podcastChannel)
   })

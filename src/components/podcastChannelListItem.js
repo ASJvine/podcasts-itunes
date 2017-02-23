@@ -5,7 +5,7 @@ function podcastChannelListItem (podcastChannel) {
   let id = podcastChannel['id'].attributes['im:id']
 
   return `
-    <div class="podcast-channel" id=${id}>
+    <a class="podcast-channel" id=${id} href="/podcast/${id}">
       <div class="podcast-channel-photo">
         <img src=${image} alt="Photo of ${label}" class="podcast-channel-photo">
       </div>
@@ -13,7 +13,7 @@ function podcastChannelListItem (podcastChannel) {
         <div class="podcast-channel-label">${label}</div>
         <div class="podcast-channel-author">Author: ${author}</div>
       </div>
-    </div>
+    </a>
     `
 }
 

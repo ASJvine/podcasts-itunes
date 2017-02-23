@@ -8,7 +8,7 @@ const DAYS = 1
 export default function () {
   return new Promise((resolve, reject) => {
     const podcastsFromLS = localStorage.getItem('podcastsList')
-    console.log('[podcastsFromLS]', podcastsFromLS)
+
     if (!podcastsFromLS) {
       console.log('Object empty > get the data from Itunes throught loadData')
       loadData().then(itunesData => {
@@ -16,9 +16,8 @@ export default function () {
       })
       return
     }
-
     if (updateTime(podcastsFromLS.date, DAYS)) {
-      console.log('Object not empty > update the data!')
+      console.log('Object not empty BUT OLD DATAAAAA > update the data!')
       loadData().then(itunesData => {
         resolve(podcastChannelListContainer(itunesData.feed.entry))
       })
