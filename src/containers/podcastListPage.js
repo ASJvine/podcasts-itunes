@@ -1,7 +1,6 @@
 import podcastChannelListContainer from './podcastChannelListContainer'
 
 import itunesMethods from '../helpers/itunes'
-import isEmptyObject from '../utils/isEmptyObject'
 import updateTime from '../utils/updateTime'
 
 const DAYS = 1
@@ -10,12 +9,10 @@ export default function () {
   return new Promise((resolve, reject) => {
     const podcastsFromLS = localStorage.getItem('podcastsList')
     console.log('[podcastsFromLS]', podcastsFromLS)
-    debugger
     if (!podcastsFromLS) {
       console.log('Object empty > get the data from Itunes throught loadData')
       loadData().then(itunesData => {
-        console.log('[LAST trial]', itunesData);
-        resolve(podcastChannelListContainer(itunesData))
+        resolve(podcastChannelListContainer(itunesData.feed.entry))
       })
       return
     }
@@ -23,17 +20,17 @@ export default function () {
     if (updateTime(podcastsFromLS.date, DAYS)) {
       console.log('Object not empty > update the data!')
       loadData().then(itunesData => {
-        resolve(podcastChannelListContainer(itunesData))
+        resolve(podcastChannelListContainer(itunesData.feed.entry))
       })
       return
     }
-    resolve(podcastChannelListContainer(JSON.parse(podcastsFromLS).data))
+    console.log('Object not empty > get the data from localStorage!')
+    resolve(podcastChannelListContainer(JSON.parse(podcastsFromLS).data.feed.entry))
   })
 }
 
 function loadData () {
   return itunesMethods.getItunesData()
-    .then(console.log)
     .then(JSON.parse)
     .then(itunesData => {
       localStorage.setItem('podcastsList', JSON.stringify({
