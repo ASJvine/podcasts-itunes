@@ -1,39 +1,46 @@
-import podcastChannelListContainer from './podcastChannelListContainer'
+import * as itunes from '../utils/itunes'
+import * as utils from '../utils'
+import podcastListItem from '../components/podcastListItem'
 
-import itunesMethods from '../helpers/itunes'
-import updateTime from '../utils/updateTime'
-
-const DAYS = 1
-
-export default function () {
+export default function podcastListPage () {
   return new Promise((resolve, reject) => {
-    const podcastsFromLS = localStorage.getItem('podcastsList')
-
-    if (!podcastsFromLS) {
-      loadData().then(itunesData => {
-        resolve(podcastChannelListContainer(itunesData.feed.entry))
-      })
+    const podcastsFromLS = localStorage.getItem('podcasts')
+    if (!podcastsFromLS || utils.isLsPodcastDataStale(JSON.parse(podcastsFromLS).date)) {
+      console.log('fetching podcasts')
+      itunes.getPodcasts()
+        .then(savePodcastsToLs)
+        .then(markup)
+        .then(resolve)
       return
     }
-    if (updateTime(JSON.parse(podcastsFromLS).date, DAYS)) {
-      loadData().then(itunesData => {
-        resolve(podcastChannelListContainer(itunesData.feed.entry))
-      })
-      return
-    }
-    resolve(podcastChannelListContainer(JSON.parse(podcastsFromLS).data.feed.entry))
+    resolve(
+      markup(JSON.parse(podcastsFromLS).data)
+    )
   })
 }
 
-function loadData () {
-  return itunesMethods.getPodcastList()
-    .then(JSON.parse)
-    .then(itunesData => {
-      localStorage.setItem('podcastsList', JSON.stringify({
-        data: itunesData,
-        date: Date.now() / 1000
-      }))
-      return itunesData
-    })
-    .catch(error => console.error('Failed!', error))
+function markup (podcasts) {
+  console.log('[podcasts markup]', podcasts)
+  const podcastListMarkup = podcasts
+    .map(podcastListItem)
+    .join(' ')
+  return `
+    <div class="field">
+      <div class="channels-found" id="podcast-length">0</div>
+      <form id="search-wrapper">
+        <input type="text" placeholder="Filter podcasts.." class="search">
+      </form>
+    </div>
+    <div class="podcast-list-item-list page">
+      <div class="podcast-list">${podcastListMarkup}</div>
+    </div>
+  `
+}
+
+function savePodcastsToLs (podcasts) {
+  localStorage.setItem('podcasts', JSON.stringify({
+    data: podcasts,
+    date: Date.now() / 1000
+  }))
+  return podcasts
 }

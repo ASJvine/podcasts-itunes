@@ -1,39 +1,34 @@
+ // NOT USED, previous attempt of getting itunes CORS resources
 export default function getCorsData (url) {
   // Return a new promise
   return new Promise(function (resolve, reject) {
     let req = createCORSRequest('GET', url)
     if (!req) {
-      alert('CORS not supported')
+      console.warn('CORS not supported')
       return
     }
 
-    // Response handlers.
-    req.onload = function () {
+    req.onload = onload
+    req.onerror = onerror
+    req.send()
+
+    function onload () {
       // This is called even on 404 etc
       // so check the status
-      if (req.status === 200) {
-        var text = req.responseText
-        console.log('[text req.responseText]', text)
-        // Resolve the promise with the response text
-        resolve(req.response)
-      } else {
-        // Otherwise reject with the status text
-        // which will hopefully be a meaningful error
-        reject(Error(req.statusText))
+      if (req.status !== 200) {
+        reject(req.statusText)
+        return
       }
+      resolve(req.response)
     }
-
     // Handle network errors
-    req.onerror = function () {
+    function onerror () {
       reject(Error('Woops, there was an error making the CORS request.'))
     }
-
-    req.send()
   })
 }
 
 // Create the XHR object.
-
 function createCORSRequest (method, url) {
   var xhr = new XMLHttpRequest()
 

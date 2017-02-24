@@ -5,8 +5,7 @@ import podcastListPage from './containers/podcastListPage'
 import podcastPage from './containers/podcastPage'
 import episodePage from './containers/episodePage'
 
-import stopLoader from './utils/stopLoader.js'
-import podcastChannelsFound from './utils/podcastChannelsFound'
+import * as utils from './utils'
 
 const rootNode = document.getElementById('root')
 
@@ -20,8 +19,8 @@ page()
 function podcastList () {
   podcastListPage().then(html => {
     rootNode.innerHTML = html
-    stopLoader('.loader')
-    podcastChannelsFound('.podcast-channel')
+    utils.stopLoader()
+    utils.renderPodcastsLength()
   })
 }
 
