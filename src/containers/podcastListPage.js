@@ -2,6 +2,8 @@ import * as itunes from '../utils/itunes'
 import * as utils from '../utils'
 import podcastListItem from '../components/podcastListItem'
 
+document.addEventListener('keyup', onKeyup)
+
 export default function podcastListPage () {
   return new Promise((resolve, reject) => {
     const podcastsFromLS = localStorage.getItem('podcasts')
@@ -28,7 +30,7 @@ function markup (podcasts) {
     <div class="field">
       <div class="channels-found" id="podcast-length">0</div>
       <form id="search-wrapper">
-        <input type="text" placeholder="Filter podcasts.." class="search">
+        <input type="text" placeholder="Filter podcasts.." class="search" id="podcast-list-filter">
       </form>
     </div>
     <div class="podcast-list-item-list page">
@@ -43,4 +45,19 @@ function savePodcastsToLs (podcasts) {
     date: Date.now() / 1000
   }))
   return podcasts
+}
+
+function onKeyup ({ target }) {
+  if (target.id !== 'podcast-list-filter') {
+    return
+  }
+  const query = new RegExp(target.value, 'i')
+  JSON.parse(localStorage.getItem('podcasts')).data
+    .forEach(podcast => {
+      const node = utils.el(podcast.id.attributes['im:id'])
+      podcast.title.label.match(query)
+        ? node.classList.remove('hidden')
+        : node.classList.add('hidden')
+    })
+  utils.renderPodcastsLength()
 }

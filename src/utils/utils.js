@@ -1,5 +1,5 @@
 export const renderPodcastsLength = () => {
-  el('podcast-length').innerHTML = document.querySelectorAll('.podcast-list-item').length
+  el('podcast-length').innerHTML = document.querySelectorAll('.podcast-list-item:not(.hidden)').length
 }
 
 export const stopLoader = () => {
