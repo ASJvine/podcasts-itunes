@@ -16,7 +16,7 @@ export default function () {
       })
       return
     }
-    if (updateTime(podcastsFromLS.date, DAYS)) {
+    if (updateTime(JSON.parse(podcastsFromLS).date, DAYS)) {
       console.log('Object not empty BUT OLD DATAAAAA > update the data!')
       loadData().then(itunesData => {
         resolve(podcastChannelListContainer(itunesData.feed.entry))
