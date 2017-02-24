@@ -10,7 +10,7 @@ import podcastChannelsFound from './utils/podcastChannelsFound'
 
 const rootNode = document.getElementById('root')
 
-page.base('/')
+// page.base('/')
 page('/', podcastList)
 page('/podcast/:podcast', podcast)
 page('/podcast/:podcast/episode/:episode', episode)
