@@ -29,7 +29,7 @@ export default function () {
 }
 
 function loadData () {
-  return itunesMethods.getItunesData()
+  return itunesMethods.getPodcastList()
     .then(JSON.parse)
     .then(itunesData => {
       localStorage.setItem('podcastsList', JSON.stringify({

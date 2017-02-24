@@ -1,36 +1,19 @@
-import $ from 'zepto-modules'
+import getData from './getData'
+import getCorsData from './getCorsData'
 
-const URL = 'https://itunes.apple.com/us/rss/toppodcasts/limit=100/genre=1310/json'
+const URL_PODCAST_LIST = 'https://itunes.apple.com/us/rss/toppodcasts/limit=100/genre=1310/json'
+const URL_SINGLE_PODCAST = 'https://itunes.apple.com/lookup?id='
+// const URL_SINGLE_PODCAST = 'https://crossorigin.me/https://itunes.apple.com/lookup?id='
 
 let itunesMethods = {
-  getItunesData: function () {
-    // Return a new promise.
-    return new Promise(function (resolve, reject) {
-      // Do the usual XHR stuff
-      var req = new XMLHttpRequest()
-      req.open('GET', URL)
-
-      req.onload = function () {
-        // This is called even on 404 etc
-        // so check the status
-        if (req.status == 200) {
-          // Resolve the promise with the response text
-          resolve(req.response)
-        } else {
-          // Otherwise reject with the status text
-          // which will hopefully be a meaningful error
-          reject(Error(req.statusText))
-        }
-      }
-
-      // Handle network errors
-      req.onerror = function () {
-        reject(Error('Network Error'))
-      }
-
-      // Make the request
-      req.send()
-    })
+  getPodcastList: function () {
+    return getData(URL_PODCAST_LIST)
+  },
+  getPodcast: function (podcastId) {
+    // let url = `https://itunes.apple.com/search?term=jack+johnson&country=US&callback=wsSearchCB`
+    let url = `${URL_SINGLE_PODCAST}podcastId`
+    console.log('[cors Url]', url)
+    return getCorsData(url)
   }
 }
 
