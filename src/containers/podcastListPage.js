@@ -10,20 +10,17 @@ export default function () {
     const podcastsFromLS = localStorage.getItem('podcastsList')
 
     if (!podcastsFromLS) {
-      console.log('Object empty > get the data from Itunes throught loadData')
       loadData().then(itunesData => {
         resolve(podcastChannelListContainer(itunesData.feed.entry))
       })
       return
     }
     if (updateTime(JSON.parse(podcastsFromLS).date, DAYS)) {
-      console.log('Object not empty BUT OLD DATAAAAA > update the data!')
       loadData().then(itunesData => {
         resolve(podcastChannelListContainer(itunesData.feed.entry))
       })
       return
     }
-    console.log('Object not empty > get the data from localStorage!')
     resolve(podcastChannelListContainer(JSON.parse(podcastsFromLS).data.feed.entry))
   })
 }

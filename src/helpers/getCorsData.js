@@ -2,7 +2,6 @@ export default function getCorsData (url) {
   // Return a new promise
   return new Promise(function (resolve, reject) {
     let req = createCORSRequest('GET', url)
-    console.log('[createCORSRequest]', req)
     if (!req) {
       alert('CORS not supported')
       return

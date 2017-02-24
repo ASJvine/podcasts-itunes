@@ -12,7 +12,6 @@ let itunesMethods = {
   getPodcast: function (podcastId) {
     // let url = `https://itunes.apple.com/search?term=jack+johnson&country=US&callback=wsSearchCB`
     let url = `${URL_SINGLE_PODCAST}podcastId`
-    console.log('[cors Url]', url)
     return getCorsData(url)
   }
 }

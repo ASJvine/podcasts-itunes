@@ -18,7 +18,6 @@ page('*', podcastList)
 page()
 
 function podcastList () {
-  console.log('podcastList page')
   podcastListPage().then(html => {
     rootNode.innerHTML = html
     stopLoader('.loader')
@@ -33,6 +32,5 @@ function podcast (ctx) {
 
 function episode (ctx) {
   const { podcastId, episodeId } = ctx.params
-  console.log('episode page', podcastId, episodeId)
   episodePage({ podcastId, episodeId }).then(html => { rootNode.innerHTML = html })
 }

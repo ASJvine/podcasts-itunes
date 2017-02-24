@@ -6,9 +6,6 @@ function podcastChannelListContainer (data) {
   data.forEach((podcastChannel) => {
     podcastsListMarkup += podcastChannelListItem(podcastChannel)
   })
-  console.log('entry length', data.length)
-  // @TODO [AdGo] Perform the injection to the html page
-  // return $('.podcast-list').append(podcastsMarkup)
   return podcastChannelList(podcastsListMarkup)
 }
 
