@@ -15,12 +15,9 @@ export default function ({podcastId}) {
         http.GET('http://localhost:3030/?url=' + encodeURIComponent(feedUrl))
           .then(JSON.parse)
           .then(function (data) {
-            return saveSinglePodcastToLs(data, podcastId)
+            return saveSinglePodcastToLs(data.rss.channel, podcastId)
           })
-          .then(function(obj) {
-            console.log('!!!!!!!!', obj);
-            return podcastLateralBar(obj)
-          })
+          .then(podcastLateralBar)
           .then(resolve)
       }
       document.head.appendChild(podcastScript)
@@ -35,8 +32,8 @@ export default function ({podcastId}) {
 
 function saveSinglePodcastToLs(obj, podcastId) {
   localStorage.setItem(podcastId, JSON.stringify({
-    data: obj.rss.channel,
+    data: obj,
     date: Date.now() / 1000
   }))
-  return obj.rss.channel
+  return obj
 }
