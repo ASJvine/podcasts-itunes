@@ -17,6 +17,7 @@ page('*', podcastList)
 page()
 
 function podcastList () {
+  utils.activateLoader()
   podcastListPage().then(html => {
     rootNode.innerHTML = html
     utils.stopLoader()
@@ -26,7 +27,11 @@ function podcastList () {
 
 function podcast (ctx) {
   const { podcastId } = ctx.params
-  podcastPage({ podcastId }).then(html => { rootNode.innerHTML = html })
+  utils.activateLoader()
+  podcastPage({ podcastId }).then(html => {
+    rootNode.innerHTML = html
+    utils.stopLoader()
+  })
 }
 
 function episode (ctx) {

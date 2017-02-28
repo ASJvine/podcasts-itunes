@@ -6,6 +6,10 @@ export const stopLoader = () => {
   el('loader').classList.add('stopped')
 }
 
+export const activateLoader = () => {
+  el('loader').classList.remove('stopped')
+}
+
 export const el = id => {
   return document.getElementById(id)
 }
