@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server",
+    "start": "concurrently --kill-others \"webpack-dev-server\" \"node ./src/proxy.js\"",
     "clean": "rm -rf build/",
     "prebuild": "npm run clean",
     "build": "NODE_ENV=production webpack",
@@ -17,6 +17,7 @@
   "license": "ISC",
   "dependencies": {
     "page": "^1.7.1",
+    "xml2json": "^0.11.0",
     "zepto-modules": "^1.0.1"
   },
   "devDependencies": {
@@ -27,6 +28,7 @@
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-latest": "^6.22.0",
     "babel-preset-stage-0": "^6.22.0",
+    "concurrently": "^3.3.0",
     "css-loader": "^0.26.1",
     "eslint": "^3.15.0",
     "eslint-config-standard": "^6.2.1",

@@ -1,22 +1,19 @@
-// import * as itunes from '../utils/itunes'
+import * as http from '../utils/http'
 
-export default function ({ podcastId }) {
+export default function ({podcastId}) {
   return new Promise((resolve, reject) => {
     const podcastScript = document.createElement('script')
     podcastScript.src = `https://itunes.apple.com/lookup?id=${podcastId}&callback=podcastCallback`
-    window.podcastCallback = function ({ results }) {
+    window.podcastCallback = function ({results}) {
       const feedUrl = results[0].feedUrl
       console.log(feedUrl)
-      const episodeScript = document.createElement('script')
-      console.log('feedUrl', feedUrl)
-      episodeScript.src = `${feedUrl}?callback=episodeCallback`
-      episodeScript.type = 'text/javascript'
-      document.head.appendChild(episodeScript)
+      http.GET('http://localhost:3030/?url=' + encodeURIComponent(feedUrl))
+        .then(JSON.parse)
+        .then(function (data) {
+          console.log('Response from proxy server: ', data)
+        })
     }
     document.head.appendChild(podcastScript)
-
-    window.episodeCallback = function () {
-      console.log('[episodeCallback]', arguments)
-    }
+    resolve('Promise RESOLVEDDDD!!!')
   })
 }
