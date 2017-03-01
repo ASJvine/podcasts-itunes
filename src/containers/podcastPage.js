@@ -25,7 +25,7 @@ export default function ({podcastId}) {
       return
     }
     resolve(
-      podcastLateralBar(JSON.parse(singlePodcastFromLS).data)
+      markup(JSON.parse(singlePodcastFromLS).data)
     )
   })
 }
