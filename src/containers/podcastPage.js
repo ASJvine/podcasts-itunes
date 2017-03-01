@@ -32,13 +32,13 @@ export default function ({podcastId}) {
   })
 }
 
-function markup (channel, id) {
+function markup (channel, podcastId) {
   const episodeListMarkup = channel.item
-    .map(episodeListItem)
+    .map(function (item, index) { return episodeListItem(item, podcastId, index) })
     .join(' ')
   const numberOfEpisodes = channel.item.length
   console.log('numberOfEpisodes', numberOfEpisodes)
-  const podcastLateralBarMarkup = podcastLateralBar(channel, id)
+  const podcastLateralBarMarkup = podcastLateralBar(channel, podcastId)
   return `
     <div class="main-container-podcast">
       ${podcastLateralBarMarkup}
