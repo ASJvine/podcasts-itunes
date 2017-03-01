@@ -49,10 +49,12 @@
   flex-basis: 0;
   flex-flow: row nowrap;
   flex-grow: 1;
+  text-decoration: none;
 
   &:first-child {
     flex: 4;
     margin-left: 5px;
+    color: $font-blue;
   }
 
   &:last-child {
