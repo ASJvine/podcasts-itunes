@@ -5,3 +5,18 @@ export const getPodcasts = () => {
     .then(JSON.parse)
     .then(({ feed }) => feed.entry)
 }
+
+export const getPodcast = (id) => {
+  return new Promise((resolve, reject) => {
+    const podcastScript = document.createElement('script')
+    podcastScript.src = `https://itunes.apple.com/lookup?id=${id}&callback=podcastCallback`
+    window.podcastCallback = function ({results}) {
+      const feedUrl = results[0].feedUrl
+      http.GET('http://localhost:3030/?url=' + encodeURIComponent(feedUrl))
+        .then(JSON.parse)
+        .then(data => resolve(data.rss.channel))
+        .catch(reject)
+    }
+    document.head.appendChild(podcastScript)
+  })
+}

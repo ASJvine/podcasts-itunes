@@ -30,3 +30,7 @@ export const formatDuration = (str) => {
   let seconds = Number(str)
   return Number.isInteger(seconds) ? new Date(seconds * 1000).toISOString().substr(11, 8) : str
 }
+
+export const podcastPageLoaded = () => {
+  return !!document.getElementById('podcast-children-container')
+}
