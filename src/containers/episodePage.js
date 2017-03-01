@@ -11,7 +11,7 @@ function markup ({ title, description, enclosure }) {
   const audioType = enclosure.type
   // const description1 = item['itunes:subtitle']
   // const description2 = item['itunes:summary']
-  // // let description = {}
+  // // let description ={}
   // // var isMyObjectEmpty = !Object.keys(description).length
   // // isMyObjectEmpty ? description = description2 : description = description1
   return `

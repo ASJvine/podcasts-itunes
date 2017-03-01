@@ -10,15 +10,14 @@
     "clean": "rm -rf build/",
     "prebuild": "npm run clean",
     "build": "NODE_ENV=production webpack",
-    "lint": "eslint src/.; exit 0",
-    "fix": "eslint --fix src/.; exit 0"
+    "lint": "eslint src --ignore-path .gitignore",
+    "lint:fix": "npm run lint -- --fix"
   },
   "author": "Alexandre Serra Jaumot",
   "license": "ISC",
   "dependencies": {
     "page": "^1.7.1",
-    "xml2json": "^0.11.0",
-    "zepto-modules": "^1.0.1"
+    "xml2json": "^0.11.0"
   },
   "devDependencies": {
     "babel-cli": "^6.23.0",
