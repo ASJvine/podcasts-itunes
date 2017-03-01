@@ -1,4 +1,4 @@
-export default function podcastLateralBar (channel) {
+export default function podcastLateralBar (channel, id) {
   const image = channel['itunes:image'].href
   const label = channel.title
   const author = channel['itunes:author']
@@ -7,14 +7,14 @@ export default function podcastLateralBar (channel) {
 
   return `
     <div class="podcast-list-item-detailed">
-      <div class="podcast-list-item-detailed-photo-wrapper">
+      <a class="podcast-list-item-detailed-photo-wrapper id="${id}" href="/podcast/${id}">
         <img src=${image} alt="Photo of ${label}">
-      </div>
+      </a>
       <div class="podcast-list-item-detailed-info-wrapper">
-        <div class="podcast-list-item-detailed-info">
+        <a class="podcast-list-item-detailed-info" id="${id}" href="/podcast/${id}">
           <div class="podcast-list-item-detailed-info-label">${label}</div>
           <div class="podcast-list-item-detailed-info-author">by ${author}</div>
-        </div>
+        </a>
         <div class="podcast-list-item-detailed-description">
           <h4>Description:</h4>
           <p>${description}<p>
