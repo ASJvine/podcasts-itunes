@@ -25,3 +25,8 @@ export const formatDate = (str) => {
   let d = new Date(str)
   return `${d.getUTCDay()}/${d.getUTCMonth()}/${d.getFullYear()}`
 }
+
+export const formatDuration = (str) => {
+  let seconds = Number(str)
+  return Number.isInteger(seconds) ? new Date(seconds * 1000).toISOString().substr(11, 8) : str
+}

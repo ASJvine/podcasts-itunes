@@ -3,7 +3,7 @@ import * as utils from '../utils'
 export default function episodeListItem (item) {
   const title = item.title
   const pubDate = utils.formatDate(item.pubDate)
-  const duration = item['itunes:duration']
+  const duration = utils.formatDuration(item['itunes:duration'])
 
   return `
     <div class="table-row">
