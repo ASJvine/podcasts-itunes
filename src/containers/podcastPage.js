@@ -8,13 +8,10 @@ export default function ({podcastId}) {
     const singlePodcastFromLS = localStorage.getItem(podcastId)
     if (!singlePodcastFromLS || utils.isLsPodcastDataStale(JSON.parse(singlePodcastFromLS).date)) {
       console.log('fetching podcast')
-      console.log('podcastId', podcastId)
       const podcastScript = document.createElement('script')
       podcastScript.src = `https://itunes.apple.com/lookup?id=${podcastId}&callback=podcastCallback`
       window.podcastCallback = function ({results}) {
         const feedUrl = results[0].feedUrl
-        console.log(feedUrl)
-        console.log('podcastId', podcastId)
         http.GET('http://localhost:3030/?url=' + encodeURIComponent(feedUrl))
           .then(JSON.parse)
           .then(function (data) {
@@ -41,7 +38,7 @@ function markup (channel, podcastId) {
   return `
     <div class="main-container-podcast">
       ${podcastLateralBarMarkup}
-        <div class="podcast-channel-episodes page">
+        <div class="podcast-channel-episodes page" id="section">
           <div class="episodes-header">
             <h2>Episodes: ${numberOfEpisodes}</h2>
           </div>

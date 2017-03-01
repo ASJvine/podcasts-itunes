@@ -11,7 +11,7 @@ const rootNode = document.getElementById('root')
 
 page('/', podcastList)
 page('/podcast/:podcastId', podcast)
-page('/podcast/:podcastId/episode/:episode', episode)
+page('/podcast/:podcastId/episode/:episodeId', episode)
 // redirect if the URL does not match any on the listed above
 page('*', podcastList)
 page()
@@ -36,5 +36,11 @@ function podcast (ctx) {
 
 function episode (ctx) {
   const { podcastId, episodeId } = ctx.params
-  episodePage({ podcastId, episodeId }).then(html => { rootNode.innerHTML = html })
+  let sectionNode = document.getElementById('section')
+  episodePage({ podcastId, episodeId }).then(html => {
+    const divExists = document.getElementsByClassName('podcast-channel-episodes') > 0
+    sectionNode.classList.remove('podcast-channel-episodes')
+    sectionNode.classList.add('single-podcast')
+    return sectionNode.innerHTML = html
+  })
 }
