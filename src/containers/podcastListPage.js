@@ -22,7 +22,6 @@ export default function podcastListPage () {
 }
 
 function markup (podcasts) {
-  console.log('[podcasts markup]', podcasts)
   const podcastListMarkup = podcasts
     .map(podcastListItem)
     .join(' ')
