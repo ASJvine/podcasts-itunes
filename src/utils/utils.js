@@ -20,3 +20,8 @@ export const isLsPodcastDataStale = timestamp => {
   const currentDate = Date.now() / 1000
   return currentDate > limitDate
 }
+
+export const formatDate = (str) => {
+  let d = new Date(str)
+  return `${d.getUTCDay()}/${d.getUTCMonth()}/${d.getFullYear()}`
+}

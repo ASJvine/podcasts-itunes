@@ -1,6 +1,8 @@
+import * as utils from '../utils'
+
 export default function episodeListItem (item) {
   const title = item.title
-  const pubDate = item.pubDate
+  const pubDate = utils.formatDate(item.pubDate)
   const duration = item['itunes:duration']
 
   return `
