@@ -21,8 +21,8 @@ function markup (channel, podcastId) {
       </div>
       <div class="episodes-list">
         <div class="table">
-          <div class="table-row table-header">
-            <div class="table-row-item">Title</div>
+          <div class="table-row table-header" >
+            <div class="table-row-item" id="title-header">Title</div>
             <div class="table-row-item">Date</div>
             <div class="table-row-item">Duration</div>
           </div>
