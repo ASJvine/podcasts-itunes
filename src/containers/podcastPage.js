@@ -20,7 +20,7 @@ export default function ({podcastId}) {
           .then(function (data) {
             return saveSinglePodcastToLs(data.rss.channel, podcastId)
           })
-          .then(function (channel) { markup(channel, podcastId) })
+          .then(function (channel) { return markup(channel, podcastId) })
           .then(resolve)
       }
       document.head.appendChild(podcastScript)
@@ -37,7 +37,6 @@ function markup (channel, podcastId) {
     .map(function (item, index) { return episodeListItem(item, podcastId, index) })
     .join(' ')
   const numberOfEpisodes = channel.item.length
-  console.log('numberOfEpisodes', numberOfEpisodes)
   const podcastLateralBarMarkup = podcastLateralBar(channel, podcastId)
   return `
     <div class="main-container-podcast">
