@@ -1,19 +1,30 @@
+import * as utils from '../utils'
+
 export default function ({ podcastId, episodeId }) {
   return new Promise((resolve, reject) => {
     const singlePodcastFromLS = JSON.parse(localStorage.getItem(podcastId))
-    let item = singlePodcastFromLS.data.item[0]
-    resolve(markup(item))
+    let item = singlePodcastFromLS.data.item[episodeId]
+    let treatedItem = getEpisodeData(item)
+    resolve(markup(treatedItem))
   })
 }
 
-function markup ({ title, description, enclosure }) {
+function getEpisodeData (item) {
+  const { title, enclosure } = item
   const audio = enclosure.url
   const audioType = enclosure.type
-  // const description1 = item['itunes:subtitle']
-  // const description2 = item['itunes:summary']
-  // // let description ={}
-  // // var isMyObjectEmpty = !Object.keys(description).length
-  // // isMyObjectEmpty ? description = description2 : description = description1
+  let description = item.description
+  const description2 = item['itunes:summary']
+  description = utils.isMyObjectUndefined(description) ? description2 : description
+  return {
+    title,
+    description,
+    audio,
+    audioType
+  }
+}
+
+function markup ({title, description, audio, audioType}) {
   return `
     <div class="podcast-channel-episode">
       <div class="podcast-channel-episode-header">

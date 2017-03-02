@@ -34,3 +34,7 @@ export const formatDuration = (str) => {
 export const podcastPageLoaded = () => {
   return !!document.getElementById('podcast-children-container')
 }
+
+export const isMyObjectUndefined = (obj) => {
+  return obj === undefined
+}

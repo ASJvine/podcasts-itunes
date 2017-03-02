@@ -65,7 +65,6 @@ function episode (ctx) {
         const containerNode = document.getElementById('podcast-children-container')
         containerNode.innerHTML = html
         utils.stopLoader()
-        console.log('hello1')
       })
       .catch(console.error)
     return
@@ -80,7 +79,6 @@ function episode (ctx) {
       const containerNode = document.getElementById('podcast-children-container')
       containerNode.innerHTML = episodePageHtml
       utils.stopLoader()
-      console.log('hello2')
     })
     .catch(console.error)
 }

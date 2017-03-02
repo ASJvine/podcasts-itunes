@@ -3,7 +3,6 @@ export default function podcastLateralBar (channel, id) {
   const label = channel.title
   const author = channel['itunes:author']
   const description = channel.description
-  // const id = channel['id'].attributes['im:id']
 
   return `
     <div class="podcast-list-item-detailed">
