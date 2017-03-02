@@ -3,14 +3,12 @@
   background-color: $dark-blue;
   border-radius: 50%;
   height: 30px;
-  /*margin: 20px auto;*/
   margin-left: auto;
   margin-top: 15px;
   width: 30px;
-}
-
-.loader.stopped {
-  animation: none;
+  &.stopped {
+    animation: none;
+  }
 }
 
 @keyframes sk-rotateplane {

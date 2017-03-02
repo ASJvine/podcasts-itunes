@@ -2,6 +2,9 @@
   box-shadow: $grey-shadow;
   flex-basis: 60%;
   flex-direction: column;
+  margin: 5px 0;
+  max-width: 550px;
+  padding: 10px 5px;
 
   &-header {
     h2 {
@@ -26,8 +29,9 @@
   &-audio {
     margin: 0 15px 15px;
     padding-top: 10px;
+
     audio {
-      background: black;
+      background: $black;
       width: 100%;
     }
   }

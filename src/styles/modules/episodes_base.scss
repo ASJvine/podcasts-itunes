@@ -1,5 +1,6 @@
-.podcast-list-item-episodes {
+.podcast-channel-episodes {
   display: flex;
   flex-basis: 60%;
   flex-direction: column;
+  max-width: 550px;
 }

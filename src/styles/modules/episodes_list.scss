@@ -10,13 +10,17 @@
   justify-content: space-between;
   line-height: 1.5;
   margin: 15px 10px;
-  padding: 10px 5px;
+  padding: 10px;
 }
 
 .table-header {
   // @TODO Add to the variables
   background-color: $table-header-background-color;
   font-weight: 700;
+}
+
+#title-header {
+  color: $black;
 }
 
 .table-row {
@@ -52,9 +56,9 @@
   text-decoration: none;
 
   &:first-child {
-    flex: 4;
+    color: $dark-blue;
+    flex: 6;
     margin-left: 5px;
-    color: $font-blue;
   }
 
   &:last-child {
@@ -62,8 +66,4 @@
     margin-right: 10px;
 
   }
-}
-
-#title-header {
-  color: $font-black;
 }

@@ -1,13 +1,15 @@
 .main-container-podcast {
   align-items: flex-start;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
-  margin-top: 80px;
+  margin-top: 30px;
 }
 
 .podcast-list-item-detailed {
   box-shadow: $grey-shadow;
   flex-basis: 25%;
+  margin: 5px 0 15px;
 
   &-photo-wrapper {
     align-items: center;
@@ -16,16 +18,16 @@
 
     img {
       border-radius: 5px;
-      margin: 20px 0;
+      margin: 20px;
       max-width: 200px;
     }
   }
 
   &-info {
+    color: $black;
     margin-left: 10px;
     padding-bottom: 20px;
     text-decoration: none;
-    color: $font-black;
 
     &-wrapper {
       border-top: $grey-border;
