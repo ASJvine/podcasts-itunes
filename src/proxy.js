@@ -31,8 +31,13 @@ const server = http.createServer(function (request, response) {
         'Access-Control-Allow-Origin': '*'
       })
 
+      let json
       // Parse xml to json
-      let json = parser.toJson(finalData)
+      try {
+        json = parser.toJson(finalData)
+      } catch (err) {
+        console.error('[err] parsing the json', err)
+      }
       response.write(json)
       response.end()
     })
