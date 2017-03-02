@@ -7,6 +7,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "concurrently --kill-others \"webpack-dev-server\" \"node ./src/proxy.js\"",
+    "start1": "webpack-dev-server",
+    "server": "node ./src/proxy.js",
     "clean": "rm -rf build/",
     "prebuild": "npm run clean",
     "build": "NODE_ENV=production webpack",
